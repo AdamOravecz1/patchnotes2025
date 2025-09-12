@@ -120,18 +120,6 @@ You know the theme.
 Start breaking the game.
 "
 
-[node name="Down1" type="Label" parent="BG/Labels"]
-offset_left = 337.0
-offset_top = 1080.0
-offset_right = 591.0
-offset_bottom = 1134.0
-theme_override_colors/font_color = Color(0.513726, 0.105882, 0, 1)
-theme_override_fonts/font = ExtResource("2_jjvhh")
-theme_override_font_sizes/font_size = 8
-text = "Well...
-You were not supposed to see this...
-"
-
 [node name="11" type="Label" parent="BG/Labels"]
 visible = false
 offset_left = -132.0
@@ -143,19 +131,6 @@ theme_override_fonts/font = ExtResource("2_jjvhh")
 theme_override_font_sizes/font_size = 8
 text = "Let's keep on track. 
 You just only have to collect trophy No.1."
-
-[node name="Down2" type="Label" parent="BG/Labels"]
-visible = false
-offset_left = 337.0
-offset_top = 1080.0
-offset_right = 591.0
-offset_bottom = 1134.0
-theme_override_colors/font_color = Color(0.513726, 0.105882, 0, 1)
-theme_override_fonts/font = ExtResource("2_jjvhh")
-theme_override_font_sizes/font_size = 8
-text = "Now you're getting it. 
-Just like that.
-"
 
 [node name="21" type="Label" parent="BG/Labels"]
 visible = false
@@ -181,6 +156,57 @@ theme_override_font_sizes/font_size = 8
 text = "I know I told you to just go for 
 throphy No.1.
 But come on!"
+
+[node name="13" type="Label" parent="BG/Labels"]
+visible = false
+offset_left = -132.0
+offset_top = 338.0
+offset_right = 127.0
+offset_bottom = 392.0
+theme_override_colors/font_color = Color(0.513726, 0.105882, 0, 1)
+theme_override_fonts/font = ExtResource("2_jjvhh")
+theme_override_font_sizes/font_size = 8
+text = "There are more trophies then
+just these 2."
+
+[node name="EnviromentLabels" type="Node2D" parent="BG"]
+
+[node name="Down1" type="Label" parent="BG/EnviromentLabels"]
+offset_left = 337.0
+offset_top = 1080.0
+offset_right = 591.0
+offset_bottom = 1134.0
+theme_override_colors/font_color = Color(0.513726, 0.105882, 0, 1)
+theme_override_fonts/font = ExtResource("2_jjvhh")
+theme_override_font_sizes/font_size = 8
+text = "Well...
+You were not supposed to see this...
+"
+
+[node name="Down2" type="Label" parent="BG/EnviromentLabels"]
+visible = false
+offset_left = 337.0
+offset_top = 1080.0
+offset_right = 591.0
+offset_bottom = 1134.0
+theme_override_colors/font_color = Color(0.513726, 0.105882, 0, 1)
+theme_override_fonts/font = ExtResource("2_jjvhh")
+theme_override_font_sizes/font_size = 8
+text = "Now you're getting it. 
+Just like that.
+"
+
+[node name="Down3" type="Label" parent="BG/EnviromentLabels"]
+visible = false
+offset_left = 337.0
+offset_top = 1080.0
+offset_right = 591.0
+offset_bottom = 1134.0
+theme_override_colors/font_color = Color(0.513726, 0.105882, 0, 1)
+theme_override_fonts/font = ExtResource("2_jjvhh")
+theme_override_font_sizes/font_size = 8
+text = "You been here.
+What do you expect?"
 
 [node name="Main" type="Node2D" parent="."]
 

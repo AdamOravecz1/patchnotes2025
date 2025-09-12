@@ -1,41 +1,37 @@
-extends Node2D
+extends Node
 
-var one = 0
-var two = 0
-var one_again = false
+var trophies_picked_up = [0, 0, 0, 0, 0]
+var line = [0]
 
 func next_level(number):
-	$BG/Labels/Jump.hide()
+	for label in $BG/Labels.get_children():
+		label.hide()
+		
+	trophies_picked_up[number-1] += 1
+	print(trophies_picked_up)
 	
-	if number == 1 and one_again:
-		$"BG/Labels/11".hide()
-		$"BG/Labels/12".show()
-	elif number == 1 and one == 0 and two == 0:
-		one += 1
-		$BG/Labels/Welcome.hide()
+	if trophies_picked_up[0] == 1 and trophies_picked_up[1] == 0:
 		$"BG/Labels/1".show()
-	elif number == 1 and one == 1 and two == 0:
-		one += 1
-		$"BG/Labels/1".hide()
+	elif trophies_picked_up[0] == 2 and trophies_picked_up[1] == 0:
 		$"BG/Labels/2".show()
-	elif number == 1 and one == 2 and two == 0:
-		#one += 1
-		$"BG/Labels/2".hide()
+	elif trophies_picked_up[0] >= 3 and trophies_picked_up[1] == 0:
 		$"BG/Labels/3".show()
-		$BG/Labels/Down1.hide()
-		$BG/Labels/Down2.show()
-	
-	elif number == 2 and one == 0 or one == 1:
-		one_again = true
-		two += 1
-		$BG/Labels/Welcome.hide()
-		$"BG/Labels/1".hide()
+	elif trophies_picked_up[1] == 1 and trophies_picked_up[0] <= 1 and line[0] == 0:
+		line[0] = 1
+		trophies_picked_up[0] == 0
 		$"BG/Labels/11".show()
-		
-	elif number == 2 and one == 2:
-		$"BG/Labels/2".hide()
-		$"BG/Labels/3".hide()
+	elif trophies_picked_up[1] == 1 and trophies_picked_up[0] > 1 and line[0] == 0:
 		$"BG/Labels/21".show()
+	elif trophies_picked_up[1] == 1 and trophies_picked_up[0] == 1 and line[0] == 1:
+		$"BG/Labels/12".show()
+	elif trophies_picked_up[1] == 1 and trophies_picked_up[0] >= 2 and line[0] == 1:
+		$"BG/Labels/13".show()
 		
-
+	if trophies_picked_up[0] > 1 and trophies_picked_up[1] == 0:
+		$BG/EnviromentLabels/Down1.hide()
+		$BG/EnviromentLabels/Down2.show()
+	if trophies_picked_up[1] > 0:
+		$BG/EnviromentLabels/Down1.hide()
+		$BG/EnviromentLabels/Down2.hide()
+		$BG/EnviromentLabels/Down3.show()
 	$Main/Blob.position = Vector2(-118, 395)
