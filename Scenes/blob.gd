@@ -13,8 +13,8 @@ var terminal_velocity := 500
 var charging_jump := false
 var charge_time := 0.0
 var max_charge := 2.0   # seconds
-var min_jump_force := -400.0
-var max_jump_force := -800.0
+var min_jump_force := -200.0
+var max_jump_force := -425.0
 
 var jump := false
 var jump_strength := 300
@@ -45,13 +45,15 @@ func apply_movement(delta):
 
 func get_input(delta):
 	# horizontal movement
-	direction.x = Input.get_axis("left", "right")
+	if not charging_jump:
+		direction.x = Input.get_axis("left", "right")
 	
 	# Start charging when jump is pressed on the ground
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and direction == Vector2.ZERO and is_on_floor():
 		charging_jump = true
 		charge_time = 0.0
 		$AnimatedSprite2D.play("duck")
+		$Legs.visible = false
 	
 	# If charging, increment the charge time
 	if charging_jump and Input.is_action_pressed("jump"):
@@ -64,22 +66,27 @@ func get_input(delta):
 		
 		# Calculate jump force based on charge ratio
 		var t = charge_time / max_charge
-		var jump_force = lerp(min_jump_force, max_jump_force, t) / 2
+		var jump_force = lerp(min_jump_force, max_jump_force, t)
 		
 		velocity.y = jump_force
 		jump = true
 		faster_fall = false
-		$AnimatedSprite2D.play("jump")
 		
 func animate():
 	if not is_on_floor():
 		$AnimatedSprite2D.play("jump")
+		$Legs.visible = false
 	elif not charging_jump:
+		$Legs.visible = true
 		if velocity.x == 0:
 			$AnimatedSprite2D.play("default")
+			$Legs.pause()
 		else:
 			$AnimatedSprite2D.play("move")
+			$Legs.play("walk")
 	if direction.x == -1:
 		$AnimatedSprite2D.flip_h = true
+		$Legs.flip_h = true
 	elif direction.x == 1:
 		$AnimatedSprite2D.flip_h = false
+		$Legs.flip_h = false
