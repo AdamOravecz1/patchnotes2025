@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://bhxx5nukfx562"]
+
+[ext_resource type="Texture2D" uid="uid://daa8j4mue6kfi" path="res://Sprites/Blob.png" id="1_cmfp3"]
+[ext_resource type="Script" uid="uid://faksg3nylu2y" path="res://Scenes/blob.gd" id="1_cvry1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvry1"]
+atlas = ExtResource("1_cmfp3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqd60"]
+atlas = ExtResource("1_cmfp3")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc5ra"]
+atlas = ExtResource("1_cmfp3")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxvcn"]
+atlas = ExtResource("1_cmfp3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8vtn"]
+atlas = ExtResource("1_cmfp3")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qc6ha"]
+atlas = ExtResource("1_cmfp3")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctfmv"]
+atlas = ExtResource("1_cmfp3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gl400"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvry1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqd60")
+}],
+"loop": true,
+"name": &"duck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc5ra")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxvcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8vtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qc6ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctfmv")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmfp3"]
+size = Vector2(22, 16)
+
+[node name="Blob" type="CharacterBody2D"]
+script = ExtResource("1_cvry1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gl400")
+animation = &"move"
+autoplay = "default"
+frame = 2
+frame_progress = 0.949862
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_cmfp3")
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="Coyote" type="Timer" parent="Timers"]
+wait_time = 0.15
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
