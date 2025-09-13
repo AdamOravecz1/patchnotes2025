@@ -1,10 +1,31 @@
 extends CharacterBody2D
 
+@export var rays = false
+@export var down = false
+
 @export var speed: float = 100.0
 @export var gravity: float = 600.0
-var direction: int = -1  # 1 = right, -1 = left
+var direction: int = 1  # 1 = right, -1 = left
+
+func _ready() -> void:
+	if down:
+		$Left.position.y = 0
+		$Right.position.y = 0
 
 func _physics_process(delta: float) -> void:
+	if $Left.is_colliding() and rays:
+		var collider = $Left.get_collider()
+		direction = -1
+		if $AnimatedSprite2D:
+			$AnimatedSprite2D.flip_h = direction < 0
+	if $Right.is_colliding() and rays:
+		var collider = $Right.get_collider()
+		direction = 1
+		if $AnimatedSprite2D:
+			$AnimatedSprite2D.flip_h = direction < 0
+		
+		
+		
 	# apply gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -22,3 +43,4 @@ func _physics_process(delta: float) -> void:
 		direction *= -1
 		if $AnimatedSprite2D:
 			$AnimatedSprite2D.flip_h = direction < 0
+			

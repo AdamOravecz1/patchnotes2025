@@ -53,3 +53,13 @@ autoplay = "move"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_1dp5w")
+
+[node name="Left" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(22, 0)
+collision_mask = 2
+
+[node name="Right" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(-21, 0)
+collision_mask = 2

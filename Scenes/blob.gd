@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 	apply_movement(delta)
 	apply_gravity(delta)
 	move_and_slide()
+	change_shape()
 	
 func apply_gravity(delta):
 	velocity.y += gravity * delta
@@ -90,3 +91,11 @@ func animate():
 	elif direction.x == 1:
 		$AnimatedSprite2D.flip_h = false
 		$Legs.flip_h = false
+		
+func change_shape():
+	if charging_jump:
+		$CollisionShape2D.disabled = true
+		$CollisionShape2DDuck.disabled = false
+	else:
+		$CollisionShape2D.disabled = false
+		$CollisionShape2DDuck.disabled = true

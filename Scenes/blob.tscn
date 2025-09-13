@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhxx5nukfx562"]
+[gd_scene load_steps=18 format=3 uid="uid://bhxx5nukfx562"]
 
 [ext_resource type="Script" uid="uid://faksg3nylu2y" path="res://Scenes/blob.gd" id="1_cvry1"]
 [ext_resource type="Texture2D" uid="uid://chh8ae5rr34sd" path="res://Sprites/Blob2.png" id="2_cvry1"]
@@ -114,13 +114,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmfp3"]
 size = Vector2(22, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvry1"]
+size = Vector2(22, 12)
+
 [node name="Blob" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_cvry1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gl400")
-animation = &"move"
+animation = &"duck"
 autoplay = "default"
 
 [node name="Legs" type="AnimatedSprite2D" parent="."]
@@ -139,3 +142,8 @@ one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="CollisionShape2DDuck" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_cvry1")
+disabled = true

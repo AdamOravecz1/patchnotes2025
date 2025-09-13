@@ -10,6 +10,7 @@ extends Area2D
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		_update_sprite()
+	_update_sprite()
 
 func _update_sprite() -> void:
 	if $Throphy:  # make sure noded exists
