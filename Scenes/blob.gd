@@ -99,3 +99,10 @@ func change_shape():
 	else:
 		$CollisionShape2D.disabled = false
 		$CollisionShape2DDuck.disabled = true
+		
+	if not is_on_floor():
+		$CollisionShape2DJump.disabled = false
+		$CollisionShape2D.disabled = true
+	else:
+		$CollisionShape2DJump.disabled = true
+		$CollisionShape2D.disabled = false

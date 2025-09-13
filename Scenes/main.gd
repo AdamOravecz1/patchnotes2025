@@ -25,6 +25,9 @@ func next_level(number):
 	if number == 3:
 		$"BG/Labels/21".show()
 		
+	if number == 4:
+		$"BG/Labels/31".show()
+		
 		
 	if number == 1:
 		$Main/Blob.position = Vector2(-118, 395)
