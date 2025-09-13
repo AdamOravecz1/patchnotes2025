@@ -22,6 +22,12 @@ var jump := false
 var jump_strength := 300
 
 func _process(delta: float) -> void:
+	if direction.x != 0 and is_on_floor(): 
+		if not $Walk.playing:
+			$Walk.pitch_scale = randf_range(0.7, 1.3)
+			$Walk.play()
+
+
 	animate()
 	get_input(delta)
 	apply_movement(delta)
@@ -76,6 +82,7 @@ func get_input(delta):
 	
 	# Release jump -> perform charged jump
 	if charging_jump and Input.is_action_just_released("jump"):
+		$Jump.play()
 		charging_jump = false
 		
 		# Calculate jump force based on charge ratio

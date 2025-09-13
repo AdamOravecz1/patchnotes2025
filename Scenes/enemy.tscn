@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://brql2b60jh3sd"]
+[gd_scene load_steps=10 format=3 uid="uid://brql2b60jh3sd"]
 
 [ext_resource type="Script" uid="uid://d3pw27564w72y" path="res://Scenes/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://c5173nmyqeh38" path="res://Sprites/Enemy.png" id="1_hghv2"]
+[ext_resource type="AudioStream" uid="uid://cobcanlq8n08b" path="res://Sounds/slime-squish-5-218569.mp3" id="3_afpow"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1f0kj"]
 atlas = ExtResource("1_hghv2")
@@ -63,3 +64,8 @@ collision_mask = 2
 position = Vector2(0, -5)
 target_position = Vector2(-21, 0)
 collision_mask = 2
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_afpow")
+volume_db = -10.0
+max_distance = 500.0

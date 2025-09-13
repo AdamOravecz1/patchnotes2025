@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo25miqxr1pal"]
+[gd_scene load_steps=9 format=3 uid="uid://bo25miqxr1pal"]
 
 [ext_resource type="Texture2D" uid="uid://b67rxyc7lgqc7" path="res://Sprites/Throphy.png" id="1_0uxw2"]
 [ext_resource type="Script" uid="uid://cni47hok0kf04" path="res://Scenes/throphy.gd" id="1_4stl3"]
+[ext_resource type="AudioStream" uid="uid://dwrgjne3mp6xq" path="res://Sounds/level-up-05-326133.mp3" id="3_ki8io"]
+[ext_resource type="AudioStream" uid="uid://qoebvs34exxh" path="res://Sounds/triumph-jingle-40125.mp3" id="4_n4c6y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4stl3"]
 size = Vector2(20, 26)
@@ -61,5 +63,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_v80dq")
 }
 autoplay = "move"
+
+[node name="Win" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ki8io")
+
+[node name="BigWin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_n4c6y")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

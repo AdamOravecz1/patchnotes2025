@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://be82gfrnjodt3"]
+[gd_scene load_steps=13 format=4 uid="uid://be82gfrnjodt3"]
 
 [ext_resource type="Texture2D" uid="uid://hvtrf21teaad" path="res://Sprites/Tiles2.png" id="1_8gbba"]
 [ext_resource type="Script" uid="uid://vnyvkvmxopyd" path="res://Scenes/main.gd" id="1_21xkr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brql2b60jh3sd" path="res://Scenes/enemy.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bo25miqxr1pal" path="res://Scenes/throphy.tscn" id="5_kry3j"]
 [ext_resource type="Texture2D" uid="uid://bcv4lfb68w8sc" path="res://Sprites/Logo.png" id="7_6bp64"]
+[ext_resource type="AudioStream" uid="uid://dg1gluh13bub8" path="res://Sounds/youtube-background-music-lofi-398315.mp3" id="8_344ge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjvhh"]
 texture = ExtResource("1_8gbba")
@@ -325,6 +326,10 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_jjvhh")
 theme_override_font_sizes/font_size = 32
 text = "NO GAMETESTING PRODUCTION"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_344ge")
+autoplay = true
 
 [connection signal="body_entered" from="Main/Catcher" to="." method="_on_catcher_body_entered"]
 [connection signal="body_entered" from="Main/Catcher2" to="." method="_on_catcher_2_body_entered"]

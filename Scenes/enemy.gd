@@ -13,6 +13,9 @@ func _ready() -> void:
 		$Right.position.y = 0
 
 func _physics_process(delta: float) -> void:
+	if not $Walk.playing:
+		$Walk.pitch_scale = randf_range(0.7, 1.3)
+		$Walk.play()
 	if $Left.is_colliding() and rays:
 		var collider = $Left.get_collider()
 		direction = -1

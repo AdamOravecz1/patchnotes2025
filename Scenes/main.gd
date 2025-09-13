@@ -11,6 +11,7 @@ func _ready() -> void:
 	tween.tween_property($CanvasLayer/ColorRect, "modulate", Color(0, 0, 0, 0), 3)
 	tween.parallel().tween_property($CanvasLayer/Control, "modulate", Color(0, 0, 0, 0), 3)
 	get_tree().paused = false
+	$Music.play()
 
 
 func next_level(number):

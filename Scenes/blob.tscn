@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhxx5nukfx562"]
+[gd_scene load_steps=22 format=3 uid="uid://bhxx5nukfx562"]
 
 [ext_resource type="Script" uid="uid://faksg3nylu2y" path="res://Scenes/blob.gd" id="1_cvry1"]
 [ext_resource type="Texture2D" uid="uid://chh8ae5rr34sd" path="res://Sprites/Blob2.png" id="2_cvry1"]
 [ext_resource type="FontFile" uid="uid://cupkam4jlg2a" path="res://PixelOperator.ttf" id="3_tqd60"]
+[ext_resource type="AudioStream" uid="uid://cobcanlq8n08b" path="res://Sounds/slime-squish-5-218569.mp3" id="4_jc5ra"]
+[ext_resource type="AudioStream" uid="uid://bwrof140lsdn5" path="res://Sounds/slime-splatter-1-220262.mp3" id="5_gxvcn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqd60"]
 atlas = ExtResource("2_cvry1")
@@ -180,3 +182,9 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_tqd60")
 theme_override_font_sizes/font_size = 32
 text = "Paused"
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_jc5ra")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_gxvcn")
