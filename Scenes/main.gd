@@ -2,6 +2,17 @@ extends Node
 
 var one = 0
 
+var paused = false
+
+func _ready() -> void:
+	get_tree().paused = true
+	await get_tree().create_timer(3).timeout
+	var tween = create_tween()
+	tween.tween_property($CanvasLayer/ColorRect, "modulate", Color(0, 0, 0, 0), 3)
+	tween.parallel().tween_property($CanvasLayer/Control, "modulate", Color(0, 0, 0, 0), 3)
+	get_tree().paused = false
+
+
 func next_level(number):
 	if number == 1 and one == 0:
 		one += 1
@@ -28,11 +39,19 @@ func next_level(number):
 	if number == 4:
 		$"BG/Labels/31".show()
 		
-		
+	if number == 5:
+		$"BG/Labels/33".show()
+	
 	if number == 1:
 		$Main/Blob.position = Vector2(-118, 395)
 		
 
 
 func _on_catcher_body_entered(body: Node2D) -> void:
+	print("1")
 	$Main/Blob.position = Vector2(5924, 429)
+
+
+func _on_catcher_2_body_entered(body: Node2D) -> void:
+	print("2")
+	$Main/Blob.position = Vector2(-104, 725)

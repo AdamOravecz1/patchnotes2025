@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bhxx5nukfx562"]
+[gd_scene load_steps=20 format=3 uid="uid://bhxx5nukfx562"]
 
 [ext_resource type="Script" uid="uid://faksg3nylu2y" path="res://Scenes/blob.gd" id="1_cvry1"]
 [ext_resource type="Texture2D" uid="uid://chh8ae5rr34sd" path="res://Sprites/Blob2.png" id="2_cvry1"]
+[ext_resource type="FontFile" uid="uid://cupkam4jlg2a" path="res://PixelOperator.ttf" id="3_tqd60"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqd60"]
 atlas = ExtResource("2_cvry1")
@@ -155,3 +156,27 @@ disabled = true
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_tqd60")
 disabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1191.0
+offset_bottom = 678.0
+color = Color(0.239216, 0.239216, 0.239216, 0.372549)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -11.5
+offset_right = 28.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_tqd60")
+theme_override_font_sizes/font_size = 32
+text = "Paused"

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var paused = false
+
 var direction := Vector2.ZERO
 var speed := 200
 var acceleration := 700
@@ -45,12 +47,23 @@ func apply_movement(delta):
 		$Timers/Coyote.start()
 
 func get_input(delta):
+	# pause
+	if Input.is_action_just_pressed("pause"):
+		jump = false
+		paused = !paused
+		if paused:
+			$CanvasLayer.visible = true
+			Engine.time_scale = 0
+		else:
+			$CanvasLayer.visible = false
+			Engine.time_scale = 1
+			
 	# horizontal movement
 	if not charging_jump:
 		direction.x = Input.get_axis("left", "right")
 	
 	# Start charging when jump is pressed on the ground
-	if Input.is_action_just_pressed("jump") and direction == Vector2.ZERO and is_on_floor():
+	if Input.is_action_just_pressed("jump") and direction == Vector2.ZERO and (is_on_floor() or not jump):
 		charging_jump = true
 		charge_time = 0.0
 		$AnimatedSprite2D.play("duck")
@@ -94,15 +107,14 @@ func animate():
 		
 func change_shape():
 	if charging_jump:
-		$CollisionShape2D.disabled = true
 		$CollisionShape2DDuck.disabled = false
 	else:
-		$CollisionShape2D.disabled = false
 		$CollisionShape2DDuck.disabled = true
-		
 	if not is_on_floor():
 		$CollisionShape2DJump.disabled = false
-		$CollisionShape2D.disabled = true
 	else:
 		$CollisionShape2DJump.disabled = true
+	if not charging_jump and is_on_floor():
 		$CollisionShape2D.disabled = false
+	else:
+		$CollisionShape2D.disabled = true
