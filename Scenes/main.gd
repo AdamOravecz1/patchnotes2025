@@ -44,7 +44,7 @@ func next_level(number):
 		$"BG/Labels/33".show()
 	
 	if number == 1:
-		$Main/Blob.position = Vector2(-118, 395)
+		$Main/Blob.position = Vector2(178, 400)
 		
 
 
@@ -55,4 +55,4 @@ func _on_catcher_body_entered(body: Node2D) -> void:
 
 func _on_catcher_2_body_entered(body: Node2D) -> void:
 	print("2")
-	$Main/Blob.position = Vector2(-104, 725)
+	$Main/Blob.position = Vector2(90, 737)

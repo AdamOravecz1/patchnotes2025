@@ -115,13 +115,15 @@ func animate():
 func change_shape():
 	if charging_jump:
 		$CollisionShape2DDuck.disabled = false
+		$CollisionShape2D.disabled = true
 	else:
 		$CollisionShape2DDuck.disabled = true
-	if not is_on_floor():
-		$CollisionShape2DJump.disabled = false
-	else:
-		$CollisionShape2DJump.disabled = true
-	if not charging_jump and is_on_floor():
 		$CollisionShape2D.disabled = false
-	else:
-		$CollisionShape2D.disabled = true
+	#if not is_on_floor():
+		#$CollisionShape2DJump.disabled = false
+	#else:
+		#$CollisionShape2DJump.disabled = true
+	#if not charging_jump and is_on_floor():
+		#$CollisionShape2D.disabled = false
+	#else:
+		#$CollisionShape2D.disabled = true
